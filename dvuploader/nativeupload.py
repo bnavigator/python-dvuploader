@@ -341,8 +341,6 @@ async def _update_metadata(
 
     tasks = []
 
-    rich.print(file_mapping)
-
     for file in files:
         dv_path = os.path.join(file.directory_label, file.file_name)  # type: ignore
 
