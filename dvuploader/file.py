@@ -58,7 +58,7 @@ class File(BaseModel):
     tab_ingest: bool = Field(default=True, alias="tabIngest")
 
     _size: int = PrivateAttr(default=0)
-    _size_unchanged_data: bool = PrivateAttr(default=False)
+    _unchanged_data: bool = PrivateAttr(default=False)
 
     def extract_file_name(self):
         """
