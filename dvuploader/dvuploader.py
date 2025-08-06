@@ -87,6 +87,8 @@ class DVUploader(BaseModel):
                 f"Files: {len(self.files)}",
             ]
         )
+        
+        rich.print(self.files)
 
         panel = Panel(
             info,
@@ -99,6 +101,8 @@ class DVUploader(BaseModel):
 
         asyncio.run(self._validate_files())
 
+        rich.print(self.files)
+
         # Check for duplicates
         self._check_duplicates(
             dataverse_url=dataverse_url,
@@ -107,12 +111,16 @@ class DVUploader(BaseModel):
             replace_existing=replace_existing,
         )
 
+        rich.print(self.files)
+
         # Sort files by size
         files = sorted(
             self.files,
             key=lambda x: x._size,
             reverse=False,
         )
+
+        rich.print(files)
 
         if not self.files:
             rich.print("\n[bold italic white]❌ No files to upload\n")
