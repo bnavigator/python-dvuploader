@@ -91,6 +91,8 @@ async def native_upload(
         "proxy": proxy,
     }
 
+    rich.print(files)
+
     async with httpx.AsyncClient(**session_params) as session:
         with tempfile.TemporaryDirectory() as tmp_dir:
             packages = distribute_files(files)
@@ -338,6 +340,8 @@ async def _update_metadata(
     )
 
     tasks = []
+
+    rich.print(file_mapping)
 
     for file in files:
         dv_path = os.path.join(file.directory_label, file.file_name)  # type: ignore
