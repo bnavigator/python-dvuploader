@@ -127,7 +127,7 @@ async def native_upload(
             ]
 
             responses = await asyncio.gather(*tasks)
-            _validate_upload_responses(responses, files)
+            _validate_upload_responses(responses, packaged_files + replacable_files)
 
             await _update_metadata(
                 session=session,
