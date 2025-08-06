@@ -94,10 +94,14 @@ class DVUploader(BaseModel):
             expand=False,
         )
 
+        rich.print(self.files)
+
         if self.verbose:
             rich.print(panel)
 
         asyncio.run(self._validate_files())
+
+        rich.print(self.files)
 
         # Check for duplicates
         self._check_duplicates(
@@ -134,6 +138,8 @@ class DVUploader(BaseModel):
             rich.print("\n[bold italic white]🚀 Uploading files\n")
 
         progress, pbars = self.setup_progress_bars(files=files)
+
+        rich.print(files)
 
         if not has_direct_upload or force_native:
             with progress:
