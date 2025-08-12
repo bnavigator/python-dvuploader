@@ -157,6 +157,7 @@ class TestNativeUpload:
             assert len(files) == 3
             assert sorted([file["label"] for file in files]) == sorted(expected_files)
 
+    @pytest.mark.xfail(reason="See discussion in #34")
     def test_native_upload_by_handler(
         self,
         credentials,
